@@ -9,7 +9,14 @@ def probabilityCalculations(numerator, denominator):
     probability = int(numerator)/int(denominator)
     percentage = probability*100
     print(f"The Probability is {numerator}/{denominator} \nThe Percentage of success is {percentage}%")
-    print("---------------------------------------------------------------------------------------------")
+    # Print filled squares for the numerator
+    for i in range(int(numerator)):
+        print("🔳 ", end="") # Symbols: N: 🔳 D: ⬜
+    # Print empty squares for the remaining probability
+    for i in range(int(numerator), int(denominator)):
+        print("⬜ ", end="")
+    print("\n---------------------------------------------------------------------------------------------")
+    
 
 def main():
     numerator = get_input("Enter the numerator: ")
@@ -22,6 +29,7 @@ def main():
             probabilityChangeInput = input("What number changed? N/D or B: ").lower()
             if probabilityChangeInput in ["n","numerator"]:
                 numerator = get_input("Enter the numerator: ")
+                denominator -= 1
             elif probabilityChangeInput in ["d","denominator"]:
                 denominator = get_input("Enter the denominator: ")
             elif probabilityChangeInput in ["b","both"]:
